@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Exercicio05 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        final float KMparaMILHAS = 0.62137f;
+        final double KMparaMILHAS = 0.62137f; //define constantes
         final int MILHAparaJARDAS = 1760;
         final int JARDAparaPES = 3;
         final int PESparaPOLEGADA = 12;
@@ -12,7 +12,7 @@ public class Exercicio05 {
 
         System.out.println("Quantos KM foram rodados? ");
         km = entrada.nextDouble();
-        
+
         System.out.println(km + " km");
         System.out.println("Em milhas " + km + "km são " + (km * KMparaMILHAS));
         System.out.println("Em Jardas " + km + "km são " + (km * KMparaMILHAS * MILHAparaJARDAS));
