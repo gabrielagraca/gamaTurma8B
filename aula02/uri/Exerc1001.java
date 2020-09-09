@@ -24,7 +24,7 @@ public class Exerc1001 {
         // %f - número com decimal
         // .1 - uma casa depois da virgula
         // A + B = X
-        //System.out.printf("%d + %d = %.1f\n", A, B, X);
+        // System.out.printf("%d + %d = %.1f\n", A, B, X);
 
         entrada.close();
     }
