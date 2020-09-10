@@ -8,8 +8,15 @@ public class Exercicio07 {
         int valor, maior, menor;
         final int QTDE_NUMEROS = 10;
 
-        maior = Integer.MIN_VALUE;
-        menor = Integer.MAX_VALUE; 
+        maior = Integer.MIN_VALUE; // menor valor possível para um inteiro
+        menor = Integer.MAX_VALUE; // maior valor possível para um inteiro
+
+        // poderia pegar o primeiro valor digitado para inicializa a variável
+        /*
+         * System.out.println("Digite o número inteiro:"); 
+         * maior = in.nextInt();
+         * menor = maior;
+         */
 
         for (int i = 0; i < QTDE_NUMEROS; i++) {
             System.out.println("Digite o valor:");
