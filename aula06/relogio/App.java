@@ -1,4 +1,4 @@
-package exercicios.exercicio6;
+package relogio;
 
 public class App {
     public static void main(String[] args) {
