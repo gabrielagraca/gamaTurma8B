@@ -16,9 +16,9 @@ public class Fila {
         System.out.println(fila);
 
         while (! fila.isEmpty()) {
-            System.out.println( fila.remove() );
+            System.out.print( String.format("%02d ", fila.remove()) );
         }
-
+        System.out.println();
         System.out.println(fila);
     }
 }
