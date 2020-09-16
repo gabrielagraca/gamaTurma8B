@@ -9,10 +9,13 @@ public class TesteApp {
         Scanner teclado = new Scanner(System.in);
         int opcao;
         
-        ArrayList<ContaCorrente> listaDeContas = new ArrayList<>();
+        ArrayList<Conta> listaDeContas = new ArrayList<>();
 
-        ContaCorrente cc = null;
+        ContaCorrente cc;// = null;
+        ContaEspecial ce;
 
+        int numeroConta;
+        double limite;
 
         do {
             System.out.println("1-Nova Conta Corrente");
@@ -29,22 +32,24 @@ public class TesteApp {
                 case 1:
                     System.out.println("Criando uma conta corrente.");
                     System.out.println("Informe o número da conta:");
-                    int numeroConta = teclado.nextInt();
+                    numeroConta = teclado.nextInt();
                     cc = new ContaCorrente(numeroConta);
                     listaDeContas.add(cc);
                     break;
                 case 2:
                     System.out.println("Criando uma conta especial.");
-                
+                    System.out.println("Informe o número da conta:");
+                    numeroConta = teclado.nextInt();
+                    System.out.println("Informe o limite:");
+                    limite = teclado.nextDouble();
+                    ce = new ContaEspecial(numeroConta, limite);
+                    listaDeContas.add(ce);
                     break;
                 case 3:
-
                     break;
                 case 4:
-
                     break;
                 case 5:
-
                     break;
                 case 6:
                     for(int i =0; i < listaDeContas.size(); i++){
