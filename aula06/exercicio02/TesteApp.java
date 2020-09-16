@@ -8,14 +8,18 @@ public class TesteApp {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         int opcao;
-        
+
         ArrayList<Conta> listaDeContas = new ArrayList<>();
 
         ContaCorrente cc;// = null;
         ContaEspecial ce;
+        ContaPoupanca cp;
+
+        ContaPoupanca.setTaxa(0.1); // ajusta a taxa de operação da poupança
 
         int numeroConta;
         double limite;
+        double valor;
 
         do {
             System.out.println("1-Nova Conta Corrente");
@@ -46,13 +50,28 @@ public class TesteApp {
                     listaDeContas.add(ce);
                     break;
                 case 3:
+                    System.out.println("Criando uma conta corrente.");
+                    System.out.println("Informe o número da conta:");
+                    numeroConta = teclado.nextInt();
+                    cp = new ContaPoupanca(numeroConta);
+                    listaDeContas.add(cp);
                     break;
                 case 4:
+                    System.out.println("Informe o número da conta:");
+                    numeroConta = teclado.nextInt();
+                    System.out.println("informe o valor do depósito:");
+                    valor = teclado.nextDouble();
+                    for (int i = 0; i < listaDeContas.size(); i++) {
+                        if(listaDeContas.get(i).getNumero() == numeroConta){
+                            listaDeContas.get(i).depositar(valor);
+                            break; //interrompe o laço for quando achou a conta
+                        }
+                    }                    
                     break;
                 case 5:
                     break;
                 case 6:
-                    for(int i =0; i < listaDeContas.size(); i++){
+                    for (int i = 0; i < listaDeContas.size(); i++) {
                         System.out.println(listaDeContas.get(i).exibir());
                     }
                     break;

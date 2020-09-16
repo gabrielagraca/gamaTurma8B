@@ -24,4 +24,10 @@ public class ContaPoupanca extends Conta {
             return false;
         }
     }
+
+    @Override
+    public String exibir() {
+        return "Popança > " + super.exibir();
+    }
+
 }
