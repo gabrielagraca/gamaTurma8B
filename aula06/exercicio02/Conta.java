@@ -1,6 +1,9 @@
 package exercicio02;
 
-public class Conta {
+
+//uma classe abstrata é aquela de onde não se pode instanciar objetos
+
+public abstract class Conta {
     private int numero;
     private double saldo;
 
