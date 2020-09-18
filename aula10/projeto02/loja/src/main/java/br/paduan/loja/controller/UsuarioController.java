@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.paduan.loja.dao.UsuarioDAO;
@@ -27,6 +29,18 @@ public class UsuarioController {
             return ResponseEntity.ok(usuario);
         }else{
             return ResponseEntity.notFound().build();
+        }
+
+    }
+
+    @PostMapping("/usuario/login")
+    public ResponseEntity<Usuario> fazerLogin(@RequestBody Usuario userIncompleto){
+        Usuario userFinded = dao.findByEmailAndSenha(userIncompleto.getEmail(), userIncompleto.getSenha());
+
+        if(userFinded != null){
+            return ResponseEntity.ok(userFinded);
+        }else{
+            return ResponseEntity.status(403).build();
         }
 
     }
