@@ -1,5 +1,7 @@
 package br.paduan.loja.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,6 +40,7 @@ public class UsuarioController {
         Usuario userFinded = dao.findByEmailAndSenha(userIncompleto.getEmail(), userIncompleto.getSenha());
 
         if(userFinded != null){
+            userFinded.setSenha("*********");
             return ResponseEntity.ok(userFinded);
         }else{
             return ResponseEntity.status(403).build();
@@ -45,4 +48,22 @@ public class UsuarioController {
 
     }
 
+    @GetMapping("/usuarios")
+    public ResponseEntity<List<Usuario>> buscarUsuarios(){
+        List<Usuario> lista = (List<Usuario>) dao.findAll(); //busca todos os usuários 
+
+        if(lista != null){
+            return ResponseEntity.ok(lista);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
+/*     @GetMapping("/usuarios")
+    public List<Usuario> buscarUsuarios(){
+        List<Usuario> lista = (List<Usuario>) dao.findAll(); //busca todos os usuários 
+
+        return lista;
+    } */
 }
