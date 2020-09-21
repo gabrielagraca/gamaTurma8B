@@ -1,6 +1,6 @@
-CREATE DATABASE aula09;
+CREATE DATABASE controle;
 
-USE aula09;
+USE controle;
 
 CREATE TABLE `usuario` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -50,7 +50,7 @@ CREATE TABLE `chamado` (
 # troca 0 = não, 1 = sim
 # status 0 = pendente, 1 = atendido
 
-INSERT INTO `chamado` VALUES (null, 1, 1, null, '2020-09-20', null, null, 0);
-INSERT INTO `chamado` VALUES (null, 1, 2, 'Instalação em novo endereço', '2020-09-20', '1:30', 0, 1);
-INSERT INTO `chamado` VALUES (null, 1, 3, null, '2020-09-20', null, null, 0);
-INSERT INTO `chamado` VALUES (null, 1, 4, null, '2020-09-20', null, null, 0);
+INSERT INTO `chamado` VALUES (null, 2, 1, null, '2020-09-20', null, null, 0);
+INSERT INTO `chamado` VALUES (null, 2, 2, 'Instalação em novo endereço', '2020-09-20', '1:30', 0, 1);
+INSERT INTO `chamado` VALUES (null, 2, 3, null, '2020-09-20', null, null, 0);
+INSERT INTO `chamado` VALUES (null, 2, 4, null, '2020-09-20', null, null, 0);
