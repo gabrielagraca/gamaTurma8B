@@ -45,6 +45,16 @@ public class Usuario {
 	@JsonIgnoreProperties("usuario")
 	private List<Chamado> chamados;
 
+	public Usuario(){
+
+	}
+
+	public Usuario(int id, String nome, String email){
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+	}
+
 	public int getId() {
 		return id;
 	}

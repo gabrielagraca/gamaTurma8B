@@ -41,11 +41,18 @@ public class Chamado {
     @Column(name = "status")
     private int status;
 
+    //vários chamados podem ser atribuídos para o mesmo usuário (técnico)
     @ManyToOne
     //nome da coluna na tabela 'chamado'
     @JoinColumn(name = "id_usuario")
     @JsonIgnoreProperties("chamados")
     private Usuario usuario;
+
+    //Vários chamados podem ter a mesma atividade associada
+    @ManyToOne
+    @JoinColumn(name = "id_atividade")
+    @JsonIgnoreProperties("chamados")
+    private Atividade atividade;
 
     //gerar os get's and set's
     //botão direto do mouse escolher Sorce Action || Ação de Origem
@@ -55,7 +62,7 @@ public class Chamado {
     public int getNumChamado() {
         return numChamado;
     }
-
+    
     public void setNumChamado(int numChamado) {
         this.numChamado = numChamado;
     }
@@ -106,6 +113,14 @@ public class Chamado {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Atividade getAtividade() {
+        return atividade;
+    }
+
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
     }
 
     
