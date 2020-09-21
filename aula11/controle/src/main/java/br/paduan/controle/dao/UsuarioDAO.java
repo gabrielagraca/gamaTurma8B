@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import br.paduan.controle.model.Usuario;
 
 public interface UsuarioDAO extends CrudRepository<Usuario, Integer>{
-    
+    public Usuario findByEmailAndSenha(String email, String senha);
 }

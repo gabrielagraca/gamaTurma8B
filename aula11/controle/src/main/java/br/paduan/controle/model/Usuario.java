@@ -1,11 +1,16 @@
 package br.paduan.controle.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -34,6 +39,11 @@ public class Usuario {
 
 	@Column(name="perfil")
 	private int perfil;
+
+	//campo do objeto Chamado que está mapeando esta relação
+	@OneToMany(mappedBy = "usuario")
+	@JsonIgnoreProperties("usuario")
+	private List<Chamado> chamados;
 
 	public int getId() {
 		return id;
@@ -89,6 +99,14 @@ public class Usuario {
 
 	public void setPerfil(int perfil) {
 		this.perfil = perfil;
+	}
+
+	public List<Chamado> getChamados() {
+		return chamados;
+	}
+
+	public void setChamados(List<Chamado> chamados) {
+		this.chamados = chamados;
 	}
 
 }
