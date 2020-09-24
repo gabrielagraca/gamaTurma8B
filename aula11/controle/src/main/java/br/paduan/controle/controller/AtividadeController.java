@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import br.paduan.controle.dao.AtividadeDAO;
 import br.paduan.controle.model.Atividade;
@@ -26,6 +27,16 @@ public class AtividadeController {
         return (List<Atividade>) dao.findAll();
     }
     
+    @GetMapping("/atividade/{id}")
+    public ResponseEntity<Atividade> getMethodName(@PathVariable int id) {
+        Atividade atvFinded =  dao.findById(id).orElse(null);
+        if(atvFinded != null){
+            return ResponseEntity.ok(atvFinded);
+        }
+        return ResponseEntity.notFound().build();
+        
+    }
+
     @PostMapping("/atividade/nova")
     public ResponseEntity<Atividade> postMethodName(@RequestBody Atividade atividade) {
         Atividade novaAtividade = dao.save(atividade);
@@ -34,5 +45,6 @@ public class AtividadeController {
         }
         return ResponseEntity.badRequest().build();
     }
+ 
     
 }

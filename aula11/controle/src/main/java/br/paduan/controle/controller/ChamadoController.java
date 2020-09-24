@@ -1,5 +1,7 @@
 package br.paduan.controle.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.paduan.controle.dao.ChamadoDAO;
 import br.paduan.controle.model.Chamado;
+import br.paduan.controle.model.Usuario;
 
 @RestController
 @CrossOrigin("*")
@@ -23,6 +26,32 @@ public class ChamadoController {
     public Chamado buscarUm(@PathVariable int id) {
         Chamado chamado = dao.findById(id).orElse(null);
         return chamado;
+    }
+
+    @GetMapping("/chamado/pendentes")
+    public List<Chamado> buscarPendentes() {
+        List<Chamado> chamados = dao.findByStatus(0);
+        return chamados;
+    }
+
+    @GetMapping("/chamado/pendentes/{id}")
+    public List<Chamado> buscarPendentes(@PathVariable int id) {
+        Usuario usuario = new Usuario(id);
+        List<Chamado> chamados = dao.findByStatusAndUsuario(0, usuario);
+        return chamados;
+    }
+
+    @GetMapping("/chamado/atendidos/{id}")
+    public List<Chamado> buscarAtendidos(@PathVariable int id) {
+        Usuario usuario = new Usuario(id);
+        List<Chamado> chamados = dao.findByStatusAndUsuario(1, usuario);
+        return chamados;
+    }
+
+    @GetMapping("/chamado/fechados")
+    public List<Chamado> buscarFechados() {
+        List<Chamado> chamados = dao.findByStatus(1);
+        return chamados;
     }
 
     @PostMapping("/chamado/update")
