@@ -13,8 +13,6 @@ import br.paduan.controle.dao.UsuarioDAO;
 import br.paduan.controle.model.Usuario;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @RestController

@@ -3,7 +3,6 @@ package br.paduan.controle.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +12,6 @@ import br.paduan.controle.dao.AtividadeDAO;
 import br.paduan.controle.model.Atividade;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 
 
 @RestController
