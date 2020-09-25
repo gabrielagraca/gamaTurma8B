@@ -23,12 +23,12 @@ public class AtividadeController {
     private AtividadeDAO dao;
 
     @GetMapping("/atividades")
-    public List<Atividade> getMethodName() {
+    public List<Atividade> listarAtividades() {
         return (List<Atividade>) dao.findAll();
     }
     
     @GetMapping("/atividade/{id}")
-    public ResponseEntity<Atividade> getMethodName(@PathVariable int id) {
+    public ResponseEntity<Atividade> atividadePorId(@PathVariable int id) {
         Atividade atvFinded =  dao.findById(id).orElse(null);
         if(atvFinded != null){
             return ResponseEntity.ok(atvFinded);

@@ -20,19 +20,21 @@ function loginAprovado(user){
     
     document.getElementById("user").innerHTML = `${user.nome} <br> ${user.cpf} ` ;
     document.getElementById("imgUser").innerHTML = `<img src ="${user.linkFoto}">`;
+    document.getElementById("idLogado").value = user.id;
     
 }
 
 
 function obterChamados(){
     let radioAtendido = document.getElementById("radioAtendidos");
+    let id = document.getElementById("idLogado").value;
     let consulta;
     
 
     if(radioAtendido.checked){
-        consulta = "http://localhost:8080/chamado/atendidos/" + "2";
+        consulta = "http://localhost:8080/chamado/atendidos/" + id;
     }else{
-        consulta = "http://localhost:8080/chamado/pendentes/" + "2";
+        consulta = "http://localhost:8080/chamado/pendentes/" + id;
     }
 /*     console.log(consulta);
     debugger; */
@@ -53,16 +55,19 @@ function filtrar(){
 
 function preencheRespostaTecnico(resposta){
     let atividades = '<table class = "table"> <tr> <th>#chamado</th> <th>descrição</th> <th>data</th> <th>horas</th> <th>usuario</th> <th>status</th> </tr>';
-    let btnStatusOn = '<button class="btn btn-sm btn-primary" onclick="logout()">Atender</button>'
+    
     let btnStatusOff = '<button class="btn btn-sm btn-secondary">Atendido</button>'
 
     for (let index = 0; index < resposta.length; index++) {
+        let btnStatusOn = `<button class="btn btn-sm btn-primary" onclick="atender(${resposta[index].numChamado})">Atender</button>`;
+
         atividades = atividades + `<tr> <td> ${resposta[index].numChamado} </td> 
                                   <td> ${resposta[index].descricao} </td>
                                   <td> ${resposta[index].dataAgendamento} </td>
                                   <td> ${resposta[index].horasGastas} </td> 
                                   <td> ${resposta[index].usuario.nome} </td> 
-                                  <td> ${resposta[index].status == 0? btnStatusOn:btnStatusOff} </td>
+                                  <td> ${resposta[index].status == 0? btnStatusOn
+                                    :btnStatusOff} </td>
                                   </tr>`;
     }
 
@@ -71,3 +76,7 @@ function preencheRespostaTecnico(resposta){
     document.getElementById("tableResposta").innerHTML = atividades;
 }
 
+function atender(numChamado) {
+
+    window.location = "atendimento.html?numChamado="+numChamado;
+}
